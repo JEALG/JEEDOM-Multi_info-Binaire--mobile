@@ -1,0 +1,62 @@
+<div style="width:90px;height:100%;vertical-align: top;" class="cmd #history# tooltips cmd-widget container-fluid" data-type="info" data-subtype="binary" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" data-eqLogic_id="#eqLogic_id#" title="#collectDate#">
+  	<!-- Info Widget
+        Basé sur les widget de 	: 
+        Mise à jour				: JAG 20190602 : Correction code pour V4
+    -->
+    <span style="font-size:12px;#hideCmdName#">#name_display#</span>
+    <div class="iconCmd#uid#"></div>
+    <span class="timeCmd#id# label value" style="font-weight: bold;font-size : 10px;"></span>
+ <script> 
+	jeedom.cmd.update['#id#'] = function(_options){
+		// Paramètrage du logo
+            // Valeur pour ON ou 1
+                var srcImglogoON_M      = ('#logoON-M#'!='#'+'logoON-M#') ? "#logoON-M#" : "oeiloff";
+                var srcImglogoON_M_T    = ('#logoON_type-M#'!='#'+'logoON_type-M#') ? "#logoON_type-M#" : "png";
+            // Valeur pour OFF ou 0
+                var srcImglogoOFF_M	    = ('#logoOFF-M#'!='#'+'logoOFF-M#') ? "#logoOFF-M#" : "oeilon";
+                var srcImglogoOFF_M_T   = ('#logoOFF_type-M#'!='#'+'logoOFF_type-M#') ? "#logoOFF_type-M#" : "png";
+		// Paramètrage du logo pour Erreur
+                var srcImglogoER_M      = ('#logoER-M#'!='#'+'logoER-M#') ? "#logoER-M#": "oups";
+                var srcImglogoER_M_T    = ('#logoER_type-M#'!='#'+'logoER_type-M#') ? "#logoER_type-M#": "png";
+		// Paramètre "sizeh" & "sizew"
+                var srcImgHeight_M      = is_numeric('#sizeh-M#') ? parseFloat('#sizeh-M#'):30;
+                var srcImgWidth_M       = is_numeric('#sizew-M#') ? parseFloat('#sizew-M#'):30;
+                var srcImgSize_M        = 'height='+srcImgHeight_M+'px width='+srcImgWidth_M+'px';
+        // Paramétrage des images
+                var srcFolder_M         = ('#dossier-M#'!='#'+'dossier-M#') ? "#dossier-M#" : "FibaroOeil";
+            if (srcFolder_M == 'NULL') {
+                var srcImgURL_M         = "plugins/widget/core/template/mobile/cmd.info.binary.Multi info - Binaire/";
+            } else {
+                var srcImgURL_M         = "plugins/widget/core/template/mobile/cmd.info.binary.Multi info - Binaire/"+srcFolder_M+'/';
+            };  
+
+		// Affichage durée changement dernier etat
+                var srcImglogoTime_M    = '#logoTime-M#';
+        
+            if (_options.display_value == '1') {
+                $('.cmd[data-cmd_id=#id#] .iconCmd#uid#').empty().append('<img src="'+srcImgURL_M +srcImglogoON_M +'.'+ srcImglogoON_M_T+'" '+srcImgSize_M+'>');
+            }else if (_options.display_value == '0') {
+                $('.cmd[data-cmd_id=#id#] .iconCmd#uid#').empty().append('<img src="'+srcImgURL_M +srcImglogoOFF_M +'.'+ srcImglogoOFF_M_T+'" '+srcImgSize_M+'>');
+            }else {
+                $('.cmd[data-cmd_id=#id#] .iconCmd#uid#').empty().append('<img src="'+srcImgURL_M +srcImglogoER_M +'.'+ srcImglogoER_M_T+'" '+srcImgSize_M+'>');
+            }
+      
+		// Derniere durée changement dernier etat
+			//Merci @Salvialf pour le code
+			if (srcImglogoTime_M == "duree") {
+				jeedom.cmd.displayDuration(_options.valueDate, $('.cmd[data-cmd_id=#id#] .timeCmd#id#'));
+			} else if (srcImglogoTime == "date") {
+				var srcdate_M     = new Date(_options.valueDate);
+				var srcformat_M   = $.datepicker.formatDate('D dd/mm', srcdate_M);
+				var srctime_M     = "à "+srcdate_M.getHours()+":"+(srcdate_M.getMinutes()<10?'0':'')+srcdate_M.getMinutes();
+				$('.cmd[data-cmd_id=#id#] .timeCmd#id#').empty().html(srcformat_M+'<br>'+srctime_M);
+			} else if (srcImglogoTime == "heure") {
+				var srcdate_M     = new Date(_options.valueDate);
+				var srctime_M     = "à "+srcdate_M.getHours()+":"+(srcdate_M.getMinutes()<10?'0':'')+srcdate_M.getMinutes()+":"+(srcdate_M.getSeconds()<10?'0':'')+srcdate_M.getSeconds()+"";
+				$('.cmd[data-cmd_id=#id#] .timeCmd#id#').empty().html(srctime_M);
+			};
+		$('.cmd[data-cmd_id=#id#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate);
+	} 
+	jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
+  </script>
+</div>
