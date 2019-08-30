@@ -18,10 +18,16 @@
 		// Paramètrage du logo pour Erreur
                 var srcImglogoER_M      = ('#logoER-M#'!='#'+'logoER-M#') ? "#logoER-M#": "oups";
                 var srcImglogoER_M_T    = ('#logoER_type-M#'!='#'+'logoER_type-M#') ? "#logoER_type-M#": "png";
-		// Paramètre "sizeh" & "sizew"
-                var srcImgHeight_M      = is_numeric('#sizeh-M#') ? parseFloat('#sizeh-M#'):30;
-                var srcImgWidth_M       = is_numeric('#sizew-M#') ? parseFloat('#sizew-M#'):30;
-                var srcImgSize_M        = 'height='+srcImgHeight_M+'px width='+srcImgWidth_M+'px';
+            // Paramètre "sizeh" & "sizew"
+                var srcImgHeight_M	   = is_numeric('#sizeh-M#') ? parseFloat('#sizeh-M#'):40;
+                var srcImgWidth_M 	   = is_numeric('#sizew-M#') ? parseFloat('#sizew-M#'):40;
+                // Type de taille
+                    var srcImgpourcent_M    = ('#Pourcentage-M#'!='#'+'Pourcentage-M#') ? "#Pourcentage-M#" : "NO";
+                    if (srcImgpourcent_M  == "NO") {
+                        var srcImgSize_M    = 'height='+srcImgHeight_M+'px width='+srcImgWidth_M+'px';
+                    } else {
+                        var srcImgSize_M    = 'height='+srcImgHeight_M+'% width='+srcImgWidth_M+'%';
+                    }
         // Paramétrage des images
                 var srcFolder_M         = ('#dossier-M#'!='#'+'dossier-M#') ? "#dossier-M#" : "FibaroOeil";
             if (srcFolder_M == 'NULL') {
