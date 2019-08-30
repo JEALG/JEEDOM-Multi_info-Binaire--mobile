@@ -25,7 +25,7 @@
                     var srcImgpourcent_M    = ('#Pourcentage-M#'!='#'+'Pourcentage-M#') ? "#Pourcentage-M#" : "NO";
                     if (srcImgpourcent_M  == "NO") {
                         var srcImgSize_M    = 'height='+srcImgHeight_M+'px width='+srcImgWidth_M+'px';
-                    } else {
+                    } else if (srcImgpourcent_M  == "YES") {
                         var srcImgSize_M    = 'height='+srcImgHeight_M+'% width='+srcImgWidth_M+'%';
                     }
         // Paramétrage des images
