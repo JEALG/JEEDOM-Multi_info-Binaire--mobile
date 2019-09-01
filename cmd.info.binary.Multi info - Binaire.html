@@ -24,6 +24,7 @@
                             var srcImglogoER_M_T    = ('#logoER_type#'!='#'+'logoER_type#') ? "#logoER_type#": "png";
                         // Variable Dossier
                             var srcFolder_M         = ('#dossier#'!='#'+'dossier#') ? "#dossier#" : "FibaroOeil";
+                            var srcFolderErreur_M   = ('#dossierER#'!='#'+'dossierER#') ? "#dossierER#" : "Erreur_danger";
                 } else if (srcImgDashboard_M  == "NO") {
                     // Variables différente avec le Dashboard
                         // Variable Image pour Valeur : ON ou 1
@@ -37,12 +38,13 @@
                             var srcImglogoER_M_T    = ('#logoER_type-M#'!='#'+'logoER_type-M#') ? "#logoER_type-M#": "png";
                         // Variable Dossier
                             var srcFolder_M         = ('#dossier-M#'!='#'+'dossier-M#') ? "#dossier-M#" : "FibaroOeil";
+                            var srcFolderErreur_M   = ('#dossierER-M#'!='#'+'dossierER-M#') ? "#dossierER-M#" : "Erreur_danger";
                 };
         
         // Paramétrage "sizeh" & "sizew"
                 // Variable Taile pour image
-                            var srcImgHeight_M	   = is_numeric('#sizeh-M#') ? parseFloat('#sizeh-M#'):40;
-                            var srcImgWidth_M 	   = is_numeric('#sizew-M#') ? parseFloat('#sizew-M#'):40;
+                            var srcImgHeight_M      = is_numeric('#sizeh-M#') ? parseFloat('#sizeh-M#'):40;
+                            var srcImgWidth_M       = is_numeric('#sizew-M#') ? parseFloat('#sizew-M#'):40;
                 // Type de taille
                             var srcImgpourcent_M    = ('#Pourcentage-M#'!='#'+'Pourcentage-M#') ? "#Pourcentage-M#" : "NO";
                     if (srcImgpourcent_M  == "NO") {
@@ -52,13 +54,12 @@
                     };
 
         // Paramétrage Dossier
+                            var srcImgURLError_M    = "plugins/widget/core/template/dashboard/cmd.info.binary.Multi info - Binaire/"+srcFolderErreur_M+'/';
                     if (srcFolder_M == 'NULL') {
                             var srcImgURL_M         = "plugins/widget/core/template/mobile/cmd.info.binary.Multi info - Binaire/";
                     } else {
                             var srcImgURL_M         = "plugins/widget/core/template/mobile/cmd.info.binary.Multi info - Binaire/"+srcFolder_M+'/';
                     };
-            // Dossier pour Erreur
-                            var srcImgURLError_M       = "plugins/widget/core/template/dashboard/cmd.info.binary.Multi info - Binaire/";
         
         // Affichage durée changement dernier etat
                             var srcImglogoTime_M    = '#logoTime-M#';
