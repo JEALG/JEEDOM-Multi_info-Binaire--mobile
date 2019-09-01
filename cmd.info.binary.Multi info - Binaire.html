@@ -1,7 +1,7 @@
 <div style="width:90px;height:100%;vertical-align: top;" class="cmd  #history# tooltips cmd-widget container-fluid" data-type="info" data-subtype="binary" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" data-eqLogic_id="#eqLogic_id#" title="#collectDate#">
   	<!-- Info Widget
         Basé sur les widget de 	: 
-        Mise à jour				: JAG 20190901 : Récupération variable Dashboard
+        Mise à jour				: JAG 20190901 : Récupération variable Dashboard + Gestion différente de l'erreur
     -->
     <center>
 		<div class="cmdName #hide_name# #hideCmdName#">#name_display#</div>
@@ -27,6 +27,7 @@
                         // Variable Dossier
                             var srcFolder_M         = ('#dossier#'!='#'+'dossier#') ? "#dossier#" : "FibaroOeil";
                             var srcFolderErreur_M   = ('#dossierER#'!='#'+'dossierER#') ? "#dossierER#" : "Erreur_danger";
+                            var srcImgValueER_M     = ('#para_ER#'!='#'+'para_ER#') ? "#para_ER#": "";
                 } else if (srcImgDashboard_M  == "NO") {
                     // Variables différente avec le Dashboard
                         // Variable Image pour Valeur : ON ou 1
@@ -41,6 +42,7 @@
                         // Variable Dossier
                             var srcFolder_M         = ('#dossier-M#'!='#'+'dossier-M#') ? "#dossier-M#" : "FibaroOeil";
                             var srcFolderErreur_M   = ('#dossierER-M#'!='#'+'dossierER-M#') ? "#dossierER-M#" : "Erreur_danger";
+                            var srcImgValueER_M     = ('#para_ER-M#'!='#'+'para_ER-M#') ? "#para_ER-M#": "";
                 };
         
         // Paramétrage "sizeh" & "sizew"
@@ -56,12 +58,24 @@
                     };
 
         // Paramétrage Dossier
-                            var srcImgURLError_M    = "plugins/widget/core/template/dashboard/cmd.info.binary.Multi info - Binaire/"+srcFolderErreur_M+'/';
                     if (srcFolder_M == 'NULL') {
                             var srcImgURL_M         = "plugins/widget/core/template/mobile/cmd.info.binary.Multi info - Binaire/";
                     } else {
                             var srcImgURL_M         = "plugins/widget/core/template/mobile/cmd.info.binary.Multi info - Binaire/"+srcFolder_M+'/';
                     };
+        
+        // Gestion Erreur
+                    if (srcImgValueER_M == "logoON") {
+                            var srcImgURLError_M      = srcImgURL_M;
+                            var srcImglogoER_M        = srcImglogoON_M;
+                            var srcImglogoER_M_T      = srcImglogoON_M_T;
+                    } else if (srcImgValueER_M == "logoOFF") {
+                            var srcImgURLError_M      = srcImgURL_M;
+                            var srcImglogoER_M        = srcImglogoOFF_M;
+                            var srcImglogoER_T      = srcImglogoOFF_M_T;
+                    }else {
+                            var srcImgURLError_M      = "plugins/widget/core/template/mobile/cmd.info.binary.Multi info - Binaire/"+srcFolderErreur_M+'/';
+            }; 
         
         // Affichage durée changement dernier etat
                             var srcImglogoTime_M    = '#logoTime-M#';
