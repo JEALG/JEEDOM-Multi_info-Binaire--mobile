@@ -1,7 +1,7 @@
 <div style="width:90px;height:100%;vertical-align: top;" class="cmd #history# tooltips cmd-widget container-fluid" data-type="info" data-subtype="binary" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" data-eqLogic_id="#eqLogic_id#" title="#collectDate#">
   	<!-- Info Widget
         Basé sur les widget de 	: 
-        Mise à jour				: JAG 20190602 : Correction code pour V4
+        Mise à jour				: JAG 20190901 : Récupération variable Dashboard
     -->
     <span style="font-size:12px;#hideCmdName#">#name_display#</span>
     <div class="iconCmd#uid#"></div>
@@ -48,7 +48,7 @@
                     if (srcImgpourcent_M  == "NO") {
                             var srcImgSize_M        = 'height='+srcImgHeight_M+'px width='+srcImgWidth_M+'px';
                     } else if (srcImgpourcent_M  == "YES") {
-                        var srcImgSize_M    = 'height='+srcImgHeight_M+'% width='+srcImgWidth_M+'%';
+                            var srcImgSize_M        = 'height='+srcImgHeight_M+'% width='+srcImgWidth_M+'%';
                     };
 
         // Paramétrage Dossier
@@ -58,7 +58,7 @@
                             var srcImgURL_M         = "plugins/widget/core/template/mobile/cmd.info.binary.Multi info - Binaire/"+srcFolder_M+'/';
                     };
             // Dossier pour Erreur
-                            var srcImgError_M       = "plugins/widget/core/template/dashboard/cmd.info.binary.Multi info - Binaire/" +srcImglogoER+"."+srcImglogoER_T;
+                            var srcImgURLError_M       = "plugins/widget/core/template/dashboard/cmd.info.binary.Multi info - Binaire/";
         
         // Affichage durée changement dernier etat
                             var srcImglogoTime_M    = '#logoTime-M#';
@@ -69,7 +69,7 @@
             }else if (_options.display_value == '0') {
                 $('.cmd[data-cmd_id=#id#] .iconCmd#uid#').empty().append('<img src="'+srcImgURL_M +srcImglogoOFF_M +'.'+ srcImglogoOFF_M_T+'" '+srcImgSize_M+'>');
             }else {
-                $('.cmd[data-cmd_id=#id#] .iconCmd#uid#').empty().append('<img src="'+srcImgError_M  +srcImglogoER_M +'.'+ srcImglogoER_M_T+'" '+srcImgSize_M+'>');
+                $('.cmd[data-cmd_id=#id#] .iconCmd#uid#').empty().append('<img src="'+srcImgURLError_M  +srcImglogoER_M +'.'+ srcImglogoER_M_T+'" '+srcImgSize_M+'>');
             }
       
 		// Derniere durée changement dernier etat
