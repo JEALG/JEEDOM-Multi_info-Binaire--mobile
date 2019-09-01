@@ -57,6 +57,8 @@
                     } else {
                             var srcImgURL_M         = "plugins/widget/core/template/mobile/cmd.info.binary.Multi info - Binaire/"+srcFolder_M+'/';
                     };
+            // Dossier pour Erreur
+                            var srcImgError_M       = "plugins/widget/core/template/dashboard/cmd.info.binary.Multi info - Binaire/" +srcImglogoER+"."+srcImglogoER_T;
         
         // Affichage durée changement dernier etat
                             var srcImglogoTime_M    = '#logoTime-M#';
@@ -67,7 +69,7 @@
             }else if (_options.display_value == '0') {
                 $('.cmd[data-cmd_id=#id#] .iconCmd#uid#').empty().append('<img src="'+srcImgURL_M +srcImglogoOFF_M +'.'+ srcImglogoOFF_M_T+'" '+srcImgSize_M+'>');
             }else {
-                $('.cmd[data-cmd_id=#id#] .iconCmd#uid#').empty().append('<img src="'+srcImgURL_M +srcImglogoER_M +'.'+ srcImglogoER_M_T+'" '+srcImgSize_M+'>');
+                $('.cmd[data-cmd_id=#id#] .iconCmd#uid#').empty().append('<img src="'+srcImgError_M  +srcImglogoER_M +'.'+ srcImglogoER_M_T+'" '+srcImgSize_M+'>');
             }
       
 		// Derniere durée changement dernier etat
