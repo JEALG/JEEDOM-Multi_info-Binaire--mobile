@@ -9,36 +9,59 @@
  <script> 
 	jeedom.cmd.update['#id#'] = function(_options){
 		// Paramètrage du logo
-            // Valeur pour ON ou 1
-                var srcImglogoON_M      = ('#logoON-M#'!='#'+'logoON-M#') ? "#logoON-M#" : "Oeiloff";
-                var srcImglogoON_M_T    = ('#logoON_type-M#'!='#'+'logoON_type-M#') ? "#logoON_type-M#" : "png";
-            // Valeur pour OFF ou 0
-                var srcImglogoOFF_M	    = ('#logoOFF-M#'!='#'+'logoOFF-M#') ? "#logoOFF-M#" : "Oeilon";
-                var srcImglogoOFF_M_T   = ('#logoOFF_type-M#'!='#'+'logoOFF_type-M#') ? "#logoOFF_type-M#" : "png";
-		// Paramètrage du logo pour Erreur
-                var srcImglogoER_M      = ('#logoER-M#'!='#'+'logoER-M#') ? "#logoER-M#": "oups";
-                var srcImglogoER_M_T    = ('#logoER_type-M#'!='#'+'logoER_type-M#') ? "#logoER_type-M#": "png";
-            // Paramètre "sizeh" & "sizew"
-                var srcImgHeight_M	   = is_numeric('#sizeh-M#') ? parseFloat('#sizeh-M#'):40;
-                var srcImgWidth_M 	   = is_numeric('#sizew-M#') ? parseFloat('#sizew-M#'):40;
+            // Récupération image du Dashboard
+                            var srcImgDashboard_M    = ('#Dashboard-M#'!='#'+'Dashboard-M#') ? "#Dashboard-M#" : "YES";
+                if (srcImgDashboard_M  == "YES") {
+                    // Variables identique avec le Dashboard
+                        // Variable Image pour Valeur : ON ou 1
+                            var srcImglogoON_M      = ('#logoON#'!='#'+'logoON#') ? "#logoON#" : "Oeiloff";
+                            var srcImglogoON_M_T    = ('#logoON_type#'!='#'+'logoON_type#') ? "#logoON_type#" : "png";
+                        // Variable Image pour Valeur : OFF ou 0
+                            var srcImglogoOFF_M	    = ('#logoOFF#'!='#'+'logoOFF#') ? "#logoOFF#" : "Oeilon";
+                            var srcImglogoOFF_M_T   = ('#logoOFF_type#'!='#'+'logoOFF_type#') ? "#logoOFF_type#" : "png";
+                        // Variable Image pour Valeur : Erreur
+                            var srcImglogoER_M      = ('#logoER#'!='#'+'logoER#') ? "#logoER#": "oups";
+                            var srcImglogoER_M_T    = ('#logoER_type#'!='#'+'logoER_type#') ? "#logoER_type#": "png";
+                        // Variable Dossier
+                            var srcFolder_M         = ('#dossier#'!='#'+'dossier#') ? "#dossier#" : "FibaroOeil";
+                } else if (srcImgDashboard_M  == "NO") {
+                    // Variables différente avec le Dashboard
+                        // Variable Image pour Valeur : ON ou 1
+                            var srcImglogoON_M      = ('#logoON-M#'!='#'+'logoON-M#') ? "#logoON-M#" : "Oeiloff";
+                            var srcImglogoON_M_T    = ('#logoON_type-M#'!='#'+'logoON_type-M#') ? "#logoON_type-M#" : "png";
+                        // Variable Image pour Valeur : OFF ou 0
+                            var srcImglogoOFF_M	    = ('#logoOFF-M#'!='#'+'logoOFF-M#') ? "#logoOFF-M#" : "Oeilon";
+                            var srcImglogoOFF_M_T   = ('#logoOFF_type-M#'!='#'+'logoOFF_type-M#') ? "#logoOFF_type-M#" : "png";
+                        // Variable Image pour Valeur : Erreur
+                            var srcImglogoER_M      = ('#logoER-M#'!='#'+'logoER-M#') ? "#logoER-M#": "oups";
+                            var srcImglogoER_M_T    = ('#logoER_type-M#'!='#'+'logoER_type-M#') ? "#logoER_type-M#": "png";
+                        // Variable Dossier
+                            var srcFolder_M         = ('#dossier-M#'!='#'+'dossier-M#') ? "#dossier-M#" : "FibaroOeil";
+                };
+        
+        // Paramétrage "sizeh" & "sizew"
+                // Variable Taile pour image
+                            var srcImgHeight_M	   = is_numeric('#sizeh-M#') ? parseFloat('#sizeh-M#'):40;
+                            var srcImgWidth_M 	   = is_numeric('#sizew-M#') ? parseFloat('#sizew-M#'):40;
                 // Type de taille
-                    var srcImgpourcent_M    = ('#Pourcentage-M#'!='#'+'Pourcentage-M#') ? "#Pourcentage-M#" : "NO";
+                            var srcImgpourcent_M    = ('#Pourcentage-M#'!='#'+'Pourcentage-M#') ? "#Pourcentage-M#" : "NO";
                     if (srcImgpourcent_M  == "NO") {
-                        var srcImgSize_M    = 'height='+srcImgHeight_M+'px width='+srcImgWidth_M+'px';
+                            var srcImgSize_M        = 'height='+srcImgHeight_M+'px width='+srcImgWidth_M+'px';
                     } else if (srcImgpourcent_M  == "YES") {
                         var srcImgSize_M    = 'height='+srcImgHeight_M+'% width='+srcImgWidth_M+'%';
-                    }
-        // Paramétrage des images
-                var srcFolder_M         = ('#dossier-M#'!='#'+'dossier-M#') ? "#dossier-M#" : "FibaroOeil";
-            if (srcFolder_M == 'NULL') {
-                var srcImgURL_M         = "plugins/widget/core/template/mobile/cmd.info.binary.Multi info - Binaire/";
-            } else {
-                var srcImgURL_M         = "plugins/widget/core/template/mobile/cmd.info.binary.Multi info - Binaire/"+srcFolder_M+'/';
-            };  
+                    };
 
-		// Affichage durée changement dernier etat
-                var srcImglogoTime_M    = '#logoTime-M#';
+        // Paramétrage Dossier
+                    if (srcFolder_M == 'NULL') {
+                            var srcImgURL_M         = "plugins/widget/core/template/mobile/cmd.info.binary.Multi info - Binaire/";
+                    } else {
+                            var srcImgURL_M         = "plugins/widget/core/template/mobile/cmd.info.binary.Multi info - Binaire/"+srcFolder_M+'/';
+                    };
         
+        // Affichage durée changement dernier etat
+                            var srcImglogoTime_M    = '#logoTime-M#';
+        
+        // Update Image
             if (_options.display_value == '1') {
                 $('.cmd[data-cmd_id=#id#] .iconCmd#uid#').empty().append('<img src="'+srcImgURL_M +srcImglogoON_M +'.'+ srcImglogoON_M_T+'" '+srcImgSize_M+'>');
             }else if (_options.display_value == '0') {
