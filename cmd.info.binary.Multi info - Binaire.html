@@ -1,7 +1,7 @@
 <div style="width:90px;height:100%;vertical-align: top;" class="cmd  #history# tooltips cmd-widget container-fluid" data-type="info" data-subtype="binary" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" data-eqLogic_id="#eqLogic_id#" title="#collectDate#">
   	<!-- Info Widget
         Basé sur les widget de 	: 
-        Mise à jour				: JAG 20190907 : Normalisation nom images => Merci à mich0111
+        Mise à jour				: JAG 20190913 : Posibilité d'utiliser la normalisation des images
     -->
     <center>
 		<div class="cmdName #hide_name# #hideCmdName#">#name_display#</div>
@@ -10,71 +10,96 @@
 	</center>
  <script> 
 	jeedom.cmd.update['#id#'] = function(_options){
-		// Paramètrage du logo
-            // Récupération image du Dashboard
-                            var srcImgDashboard_M    = ('#Dashboard-M#'!='#'+'Dashboard-M#') ? "#Dashboard-M#" : "YES";
+            // Paramètrage du logo
+                    // Récupération image du Dashboard
+                                var srcImgDashboard_M   = ('#Dashboard-M#'!='#'+'Dashboard-M#') ? "#Dashboard-M#" : "YES";
                 if (srcImgDashboard_M  == "YES") {
                     // Variables identique avec le Dashboard
-                        // Variable Image pour Valeur : ON ou 1
-                            var srcImglogoON_M      = ('#logoON#'!='#'+'logoON#') ? "#logoON#" : "fi_bu_on";
-                            var srcImglogoON_M_T    = ('#logoON_type#'!='#'+'logoON_type#') ? "#logoON_type#" : "png";
-                        // Variable Image pour Valeur : OFF ou 0
-                            var srcImglogoOFF_M	    = ('#logoOFF#'!='#'+'logoOFF#') ? "#logoOFF#" : "fi_wh_off";
-                            var srcImglogoOFF_M_T   = ('#logoOFF_type#'!='#'+'logoOFF_type#') ? "#logoOFF_type#" : "png";
-                        // Variable Image pour Valeur : Erreur
-                            var srcImglogoER_M      = ('#logoER#'!='#'+'logoER#') ? "#logoER#": "er_oups4_or";
-                            var srcImglogoER_M_T    = ('#logoER_type#'!='#'+'logoER_type#') ? "#logoER_type#": "png";
-                        // Variable Dossier
-                            var srcFolder_M         = ('#dossier#'!='#'+'dossier#') ? "#dossier#" : "fibarooeil";
-                            var srcFolderErreur_M   = ('#dossierER#'!='#'+'dossierER#') ? "#dossierER#" : "error";
-                            var srcImgValueER_M     = ('#para_ER#'!='#'+'para_ER#') ? "#para_ER#": "";
+                        // Valeur du logo
+                                var srcImglogo_M        = ('#logo#'!='#'+'logo#') ? "#logo#" : "";
+                                var srcImglogo_M_T      = ('#logo_type#'!='#'+'logo_type#') ? "#logo_type#" : "png";
+                    // Paramétrage des images
+                        if (srcImglogo_M == "") {
+                            // Variable Image pour Valeur : ON ou 1
+                                var srcImglogoON_M      = ('#logoON#'!='#'+'logoON#') ? "#logoON#" : "fi_wh_off";
+                                var srcImglogoON_M_T    = ('#logoON_type#'!='#'+'logoON_type#') ? "#logoON_type#" : "png";
+                            // Variable Image pour Valeur : OFF ou 0
+                                var srcImglogoOFF_M     = ('#logoOFF#'!='#'+'logoOFF#') ? "#logoOFF#" : "fi_bu_on";
+                                var srcImglogoOFF_M_T   = ('#logoOFF_type#'!='#'+'logoOFF_type#') ? "#logoOFF_type#" : "png";
+                        } else {
+                            // Variable Image pour Valeur : ON ou 1
+                                var srcImglogoON_M      = srcImglogo_M + '_on';
+                                var srcImglogoON_M_T    = srcImglogo_M_T;
+                            // Variable Image pour Valeur : OFF ou 0
+                                var srcImglogoOFF_M     = srcImglogo_M + '_off';
+                                var srcImglogoOFF_M_T   = srcImglogo_M_T;
+                        };
+                    // Variable Image pour Valeur : Erreur
+                                var srcImglogoER_M      = ('#logoER#'!='#'+'logoER#') ? "#logoER#": "er_oups4_or";
+                                var srcImglogoER_M_T    = ('#logoER_type#'!='#'+'logoER_type#') ? "#logoER_type#": "png";
+                    // Variable Dossier
+                                var srcFolder_M         = ('#dossier#'!='#'+'dossier#') ? "#dossier#" : "fibarooeil";
+                                var srcFolderErreur_M   = ('#dossierER#'!='#'+'dossierER#') ? "#dossierER#" : "error";
+                                var srcImgValueER_M     = ('#para_ER#'!='#'+'para_ER#') ? "#para_ER#": "";
                 } else if (srcImgDashboard_M  == "NO") {
-                    // Variables différente avec le Dashboard
-                        // Variable Image pour Valeur : ON ou 1
-                            var srcImglogoON_M      = ('#logoON-M#'!='#'+'logoON-M#') ? "#logoON-M#" : "fi_bu_on";
-                            var srcImglogoON_M_T    = ('#logoON_type-M#'!='#'+'logoON_type-M#') ? "#logoON_type-M#" : "png";
-                        // Variable Image pour Valeur : OFF ou 0
-                            var srcImglogoOFF_M	    = ('#logoOFF-M#'!='#'+'logoOFF-M#') ? "#logoOFF-M#" : "fi_wh_off;
-                            var srcImglogoOFF_M_T   = ('#logoOFF_type-M#'!='#'+'logoOFF_type-M#') ? "#logoOFF_type-M#" : "png";
-                        // Variable Image pour Valeur : Erreur
-                            var srcImglogoER_M      = ('#logoER-M#'!='#'+'logoER-M#') ? "#logoER-M#": "er_oups4_or";
-                            var srcImglogoER_M_T    = ('#logoER_type-M#'!='#'+'logoER_type-M#') ? "#logoER_type-M#": "png";
-                        // Variable Dossier
-                            var srcFolder_M         = ('#dossier-M#'!='#'+'dossier-M#') ? "#dossier-M#" : "fibarooeil";
-                            var srcFolderErreur_M   = ('#dossierER-M#'!='#'+'dossierER-M#') ? "#dossierER-M#" : "error";
-                            var srcImgValueER_M     = ('#para_ER-M#'!='#'+'para_ER-M#') ? "#para_ER-M#": "";
+                    // Variables identique avec le Dashboard
+                        // Valeur du logo
+                                var srcImglogo_M        = ('#logo-M#'!='#'+'logo-M#') ? "#logo-M#" : "";
+                                var srcImglogo_M_T      = ('#logo_type-M#'!='#'+'logo_type-M#') ? "#logo_type-M#" : "png";
+                    // Paramétrage des images
+                        if (srcImglogo_M == "") {
+                            // Variable Image pour Valeur : ON ou 1
+                                var srcImglogoON_M      = ('#logoON-M#'!='#'+'logoON-M#') ? "#logoON-M#" : "fi_wh_off";
+                                var srcImglogoON_M_T    = ('#logoON_type-M#'!='#'+'logoON_type-M#') ? "#logoON_type-M#" : "png";
+                            // Variable Image pour Valeur : OFF ou 0
+                                var srcImglogoOFF_M     = ('#logoOFF-M#'!='#'+'logoOFF-M#') ? "#logoOFF-M#" : "fi_bu_on";
+                                var srcImglogoOFF_M_T   = ('#logoOFF_type-M#'!='#'+'logoOFF_type-M#') ? "#logoOFF_type-M#" : "png";
+                        } else {
+                            // Variable Image pour Valeur : ON ou 1
+                                var srcImglogoON_M      = srcImglogo_M + '_on';
+                                var srcImglogoON_M_T    = srcImglogo_M_T;
+                            // Variable Image pour Valeur : OFF ou 0
+                                var srcImglogoOFF_M     = srcImglogo_M + '_off';
+                                var srcImglogoOFF_M_T   = srcImglogo_M_T;
+                        };
+                    // Variable Image pour Valeur : Erreur
+                                var srcImglogoER_M      = ('#logoER-M#'!='#'+'logoER-M#') ? "#logoER-M#": "er_oups4_or";
+                                var srcImglogoER_M_T    = ('#logoER_type-M#'!='#'+'logoER_type-M#') ? "#logoER_type-M#": "png";
+                    // Variable Dossier
+                                var srcFolder_M         = ('#dossier-M#'!='#'+'dossier-M#') ? "#dossier-M#" : "fibarooeil";
+                                var srcFolderErreur_M   = ('#dossierER-M#'!='#'+'dossierER-M#') ? "#dossierER-M#" : "error";
+                                var srcImgValueER_M     = ('#para_ER-M#'!='#'+'para_ER-M#') ? "#para_ER-M#": "";
                 };
-        
-        // Paramétrage "sizeh" & "sizew"
-                // Variable Taile pour image
-                            var srcImgHeight_M      = is_numeric('#sizeh-M#') ? parseFloat('#sizeh-M#'):40;
-                            var srcImgWidth_M       = is_numeric('#sizew-M#') ? parseFloat('#sizew-M#'):40;
-                // Type de taille
-                            var srcImgpourcent_M    = ('#Pourcentage-M#'!='#'+'Pourcentage-M#') ? "#Pourcentage-M#" : "NO";
-                    if (srcImgpourcent_M  == "NO") {
-                            var srcImgSize_M        = 'height='+srcImgHeight_M+'px width='+srcImgWidth_M+'px';
-                    } else if (srcImgpourcent_M  == "YES") {
-                            var srcImgSize_M        = 'height='+srcImgHeight_M+'% width='+srcImgWidth_M+'%';
-                    };
-
-        // Paramétrage Dossier
+       
+            // Paramètre "sizeh" & "sizew"
+                                var srcImgHeight_M      = is_numeric('#sizeh-M#') ? parseFloat('#sizeh-M#'):40;
+                                var srcImgWidth_M       = is_numeric('#sizew-M#') ? parseFloat('#sizew-M#'):40;
+            // Type de taille
+                                var srcImgpourcent_M    = ('#Pourcentage-M#'!='#'+'Pourcentage-M#') ? "#Pourcentage-M#" : "NO";
+                if (srcImgpourcent_M  == "NO") {
+                                var srcImgSize_M        = 'height='+srcImgHeight_M+'px width='+srcImgWidth_M+'px';
+                } else if (srcImgpourcent_M  == "YES") {
+                                var srcImgSize_M        = 'height='+srcImgHeight_M+'% width='+srcImgWidth_M+'%';
+                };
+            
+            // Paramétrage Dossier
                     if (srcFolder_M == 'NULL') {
-                            var srcImgURL_M         = "plugins/widget/core/template/dashboard/cmd.action.other.Multi-action-Defaut/";
+                                var srcImgURL_M         = "plugins/widget/core/template/dashboard/cmd.action.other.Multi-action-Defaut/";
                     } else {
-                            var srcImgURL_M         = "plugins/widget/core/template/dashboard/cmd.action.other.Multi-action-Defaut/"+srcFolder_M+'/';
+                                var srcImgURL_M         = "plugins/widget/core/template/dashboard/cmd.action.other.Multi-action-Defaut/"+srcFolder_M+'/';
                     };
         
         // Gestion Erreur
                     if (srcImgValueER_M == "logoON") {
-                            var srcImgURLError_M      = srcImgURL_M;
-                            var srcImglogoER_M        = srcImglogoON_M;
-                            var srcImglogoER_M_T      = srcImglogoON_M_T;
+                            var srcImgURLError_M        = srcImgURL_M;
+                            var srcImglogoER_M          = srcImglogoON_M;
+                            var srcImglogoER_M_T        = srcImglogoON_M_T;
                     } else if (srcImgValueER_M == "logoOFF") {
-                            var srcImgURLError_M      = srcImgURL_M;
-                            var srcImglogoER_M        = srcImglogoOFF_M;
-                            var srcImglogoER_T      = srcImglogoOFF_M_T;
+                            var srcImgURLError_M        = srcImgURL_M;
+                            var srcImglogoER_M          = srcImglogoOFF_M;
+                            var srcImglogoER_T          = srcImglogoOFF_M_T;
                     }else {
-                            var srcImgURLError_M      = "plugins/widget/core/template/mobile/cmd.info.binary.Multi info - Binaire/"+srcFolderErreur_M+'/';
+                            var srcImgURLError_M        = "plugins/widget/core/template/dashboard/cmd.action.other.Multi-action-Defaut/"+srcFolderErreur_M+'/';
             }; 
         
         // Affichage durée changement dernier etat
