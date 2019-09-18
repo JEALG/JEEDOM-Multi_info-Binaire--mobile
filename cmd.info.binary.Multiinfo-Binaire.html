@@ -1,7 +1,7 @@
 <div style="width:90px;height:100%;vertical-align: top;" class="cmd  #history# tooltips cmd-widget container-fluid" data-type="info" data-subtype="binary" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" data-eqLogic_id="#eqLogic_id#" title="#collectDate#">
   	<!-- Info Widget
         Basé sur les widget de 	: 
-        Mise à jour				: JAG 20190917 : Mise à uniquement pour core v4
+        Mise à jour				: JAG 20190918 : Migration uniquement pour core V4
     -->
     <center>
 		<div class="cmdName #hide_name# #hideCmdName#">#name_display#</div>
@@ -84,9 +84,9 @@
             
             // Paramétrage Dossier
                     if (srcFolder_M == 'NULL') {
-                                var srcImgURL_M         = "plugins/widget/core/template/dashboard/cmd.action.other.Multi-action-Defaut/";
+                                var srcImgURL_M         = "data/customTemplates/dashboard/cmd.action.other.Multi-action-Defaut/";
                     } else {
-                                var srcImgURL_M         = "plugins/widget/core/template/dashboard/cmd.action.other.Multi-action-Defaut/"+srcFolder_M+'/';
+                                var srcImgURL_M         = "data/customTemplates/dashboard/cmd.action.other.Multi-action-Defaut/"+srcFolder_M+'/';
                     };
         
         // Gestion Erreur
@@ -99,7 +99,7 @@
                             var srcImglogoER_M          = srcImglogoOFF_M;
                             var srcImglogoER_T          = srcImglogoOFF_M_T;
                     }else {
-                            var srcImgURLError_M        = "plugins/widget/core/template/dashboard/cmd.action.other.Multi-action-Defaut/"+srcFolderErreur_M+'/';
+                            var srcImgURLError_M        = "data/customTemplates/dashboard/cmd.action.other.Multi-action-Defaut/"+srcFolderErreur_M+'/';
             }; 
         
         // Affichage durée changement dernier etat
