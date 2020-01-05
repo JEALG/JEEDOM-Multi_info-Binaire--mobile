@@ -120,9 +120,9 @@
                 if (srcImglogoTime_M == "duree") {
                     jeedom.cmd.displayDuration(_options.valueDate, $('.cmd[data-cmd_id=#id#] .timeCmd#id#'));
                 } else if (srcImglogoTime_M == "date") {
-                    var srcdate_M       = new Date(_options.valueDate);
-                    var srcformat_M     = $.datepicker.formatDate('D dd/mm', srcdate_M);
-                    var srctime_M       = "à "+srcdate_M.getHours()+":"+(srcdate_M.getMinutes()<10?'0':'')+srcdate_M.getMinutes();
+                    var srcdate_M   = new Date(_options.valueDate);
+                    var srcformat_M = $.datepicker.formatDate('D dd/mm', srcdate_M);
+                    var srctime_M   = "à "+srcdate_M.getHours()+":"+(srcdate_M.getMinutes()<10?'0':'')+srcdate_M.getMinutes();
                     $('.cmd[data-cmd_id=#id#] .timeCmd#id#').empty().html(srcformat_M+' '+srctime_M);
                 } else if (srcImglogoTime_M == "heure") {
                     var srcdate_M   = new Date(_options.valueDate);
