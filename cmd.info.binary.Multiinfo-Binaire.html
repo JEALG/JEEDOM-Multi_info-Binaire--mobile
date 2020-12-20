@@ -2,7 +2,7 @@
     <!-- Info Widget
         Widget de           : JAG
         Widget pour le Core : V4
-        Mise à jour         : JAG 20200502 => Ajout Version Core
+        Mise à jour         : JAG 20201220 => Update suite changement localisation image
 	-->
     <center>
         <div class="cmdName #hide_name# #hideCmdName#">#name_display#</div>
@@ -89,9 +89,9 @@
 
             // Paramétrage Dossier
             if (srcFolder_M == 'NULL') {
-                var srcImgURL_M = "data/customTemplates/dashboard/cmd.action.other.Multi-action-Defaut/";
+                var srcImgURL_M = "data/img/";
             } else {
-                var srcImgURL_M = "data/customTemplates/dashboard/cmd.action.other.Multi-action-Defaut/" + srcFolder_M + '/';
+                var srcImgURL_M = "data/img/" + srcFolder_M + '/';
             };
 
             // Gestion Erreur
@@ -104,7 +104,7 @@
                 var srcImglogoER_M = srcImglogoOFF_M;
                 var srcImglogoER_T = srcImglogoOFF_M_T;
             } else {
-                var srcImgURL_M_ER = "data/customTemplates/dashboard/cmd.action.other.Multi-action-Defaut/" + srcFolderER_M + '/';
+                var srcImgURL_M_ER = "data/img/" + srcFolderER_M + '/';
             };
 
             // Update Image
